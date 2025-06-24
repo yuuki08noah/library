@@ -20,9 +20,10 @@
 | 4  | 대출자 이름(borrower), 도서 제목(title)을 받아 해당 도서를 대출 처리한다.      | `/borrows`                            | post   | true / false                              | books, borrowings | -                           |
 | 5  | 대출자의 대출한 도서 제목을 저장한다.                                | `/borrows`                            | =      | =                                         | -                 | `borrower:{borrower}:books` |
 | 6  | 대출이 있었던 월(borrow_month)을 받아 해당 월에 대출이 있었던 책들의 목록을 조회한다. | `/borrows/month`<br>`/{borrow_month}` | get    | `[{borrower: 대출자, title:책제목, author:저자]`  | borrowings        | -                           |
-| 7  | 대출자 이름(borrower), 도서 제목(title)을 받아 해당 도서를 반납 처리한다.      | `/return`                             | post   | true/false                                | book, borrowings |  - |
-| 8  | 대출자의 대출한 도서 제목을 삭제한다.                                   | `/return`                             | =      | =                                         | -                 | `borrower:{borrower}:books`                |
-| 9  | 대출자 이름(borrower)을 받아 해당 대출자의 기록을 조회한다.                  | `/borrowers`<br>`/{borrower}/books`   | get    | `{borrower:대출자, books:[책제목1, 책제목2 ...] }` | -                 | `borrower:{borrower}:books`                |         
+| 7  | 대출자 이름(borrower)을 받아 해당 대출자의 기록을 조회한다.                  | `/borrowers`<br>`/{borrower}/books`   | get    | `{borrower:대출자, books:[책제목1, 책제목2 ...] }` | -                 | `borrower:{borrower}:books`                |
+| 8  | 대출자 이름(borrower), 도서 제목(title)을 받아 해당 도서를 반납 처리한다.      | `/return`                             | post   | true/false                                | book, borrowings |  - |
+| 9  | 대출자의 대출한 도서 제목을 삭제한다.                                   | `/return`                             | =      | =                                         | -                 | `borrower:{borrower}:books`                |
+         
 
 # 환경세팅 및 제출 방법
 1. PyCharm 으로 진행
