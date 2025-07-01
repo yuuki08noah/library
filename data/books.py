@@ -24,8 +24,8 @@ def delete_book_available_by_book_id(book_id):
     return True
 
 def toggle_book_available_by_book_id(book_id, available):
-    sql = "update books set available = available where book_id = ?"
-    cur.execute(sql, (book_id,))
+    sql = "update books set available = ? where book_id = ?"
+    cur.execute(sql, (available, book_id,))
     con.commit()
     return True
 

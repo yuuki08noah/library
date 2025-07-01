@@ -7,7 +7,7 @@ router = APIRouter(prefix="/books")
 
 @router.post("")
 def post_book(body: BookRequest = Body(...)):
-    return service.post_book(body) or False
+    return service.post_book(body)
 
 @router.get("")
 def get_available_books():
@@ -15,4 +15,4 @@ def get_available_books():
 
 @router.delete("/{book_id}")
 def delete_book_available_by_book_id(book_id: int):
-    return service.delete_book_available_by_book_id(book_id) or False
+    return service.delete_book_available_by_book_id(book_id)

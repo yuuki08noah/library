@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from data import borrowings as data
 from data import books as book_data
 from cache import borrower as cache
@@ -13,10 +15,10 @@ def test():
 
 def borrow(body: BorrowRequest):
     book = book_data.get_book_by_title(body.title)
-    if not book or not book[-1]:
+    if not book or book[-1] == 0: # 해당 책이 없거나 Not Available 할때
         raise BookNotAvailable()
     book_id = book[0]
-    borrow = data.get_borrows_by_borrower_and_book_id(body.borrower, book_id)
+    borrow = data.get_borrows_by_borrower_and_book_id(body.borrower, book_id) # 예전에 해당 도서를 해당 대출자가 대출한 적이 있다면 시간만 바꿔줌
     return (data.borrow(body.borrower, book_id) if not borrow else data.set_borrow_time(body.borrower, book_id) and
             cache.borrow(body.borrower, body.title) and
             book_data.toggle_book_available_by_book_id(book_id, 0))
